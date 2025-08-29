@@ -1,0 +1,25 @@
+projects:
+  - name: demo-proj
+    description: Demo project
+    sourceRepos: ["https://github.com/zcubbs/hotpot"]
+    destinations:
+      - namespace: default
+        server: https://kubernetes.default.svc
+
+applications:
+  - name: demo-app
+    project: demo-proj
+    sourceRepoURL: https://github.com/zcubbs/hotpot
+    sourcePath: manifests/app
+    destinationNamespace: default
+    destinationServer: https://kubernetes.default.svc
+    syncPolicy: automated
+
+repositories:
+  - url: https://github.com/zcubbs/go-k8s
+    type: git
+
+credentials:
+  - url: https://github.com
+    username: ${GIT_USERNAME}
+    password: ${GIT_PASSWORD}
