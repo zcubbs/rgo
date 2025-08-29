@@ -1,0 +1,27 @@
+projects:
+  - name: foundation
+    description: Foundation
+    sourceRepos: ["https://gitlab.forge.berger-levrault.com/bu-collectivites/ai/foundation-gitops"]
+    destinations:
+      - namespace: default
+        server: https://kubernetes.default.svc
+
+applications:
+  - name: foundation-dev
+    project: foundation
+    sourceRepoURL: https://gitlab.forge.berger-levrault.com/bu-collectivites/ai/foundation-gitops
+    sourcePath: apps/foundation/chart
+    destinationNamespace: foundation-dev
+    destinationServer: https://kubernetes.default.svc
+    syncPolicy: automated
+
+repositories:
+  - url: https://gitlab.forge.berger-levrault.com/bu-collectivites/ai/foundation-gitops
+    type: git
+    name: foundation-gitops
+
+credentials:
+  - url: https://gitlab.forge.berger-levrault.com
+    username: ${GIT_USERNAME}
+    password: ${GIT_PASSWORD}
+    name: gitlab-auth

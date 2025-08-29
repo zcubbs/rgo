@@ -16,7 +16,12 @@ var gvrSecret = schema.GroupVersionResource{Group: "", Version: "v1", Resource: 
 func BuildRepoSecrets(repos []config.Repository, ns string) []k8s.Object {
 	out := make([]k8s.Object, 0, len(repos))
 	for _, r := range repos {
-		name := secretNameFromURL(r.URL)
+		var name string
+		if r.Name != "" {
+			name = fmt.Sprintf("repo-%s", r.Name)
+		} else {
+			name = secretNameFromURL(r.URL)
+		}
 		obj := &unstructured.Unstructured{Object: map[string]interface{}{
 			"apiVersion": "v1",
 			"kind":       "Secret",
@@ -39,7 +44,12 @@ func BuildRepoSecrets(repos []config.Repository, ns string) []k8s.Object {
 func BuildCredentialSecrets(creds []config.Credential, ns string) []k8s.Object {
 	out := make([]k8s.Object, 0, len(creds))
 	for _, c := range creds {
-		name := secretNameFromURL(c.URL)
+		var name string
+		if c.Name != "" {
+			name = fmt.Sprintf("repo-%s", c.Name)
+		} else {
+			name = secretNameFromURL(c.URL)
+		}
 		stringData := map[string]interface{}{"url": c.URL}
 		if c.Username != "" {
 			stringData["username"] = c.Username

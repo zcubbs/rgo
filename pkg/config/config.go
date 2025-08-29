@@ -26,10 +26,12 @@ import (
 // repositories:
 //   - url: https://github.com/zcubbs/go-k8s
 //     type: git
+//     name: demo-repo
 // credentials:
 //   - url: https://github.com
 //     username: ${GIT_USERNAME}
 //     password: ${GIT_PASSWORD}
+//     name: demo-cred
 
 type Config struct {
 	Projects     []Project     `mapstructure:"projects"`
@@ -63,6 +65,7 @@ type Application struct {
 type Repository struct {
 	URL  string `mapstructure:"url"`
 	Type string `mapstructure:"type"`
+	Name string `mapstructure:"name"`
 }
 
 type Credential struct {
@@ -70,6 +73,7 @@ type Credential struct {
 	Username string `mapstructure:"username"`
 	Password string `mapstructure:"password"`
 	SSHKey   string `mapstructure:"sshKey"`
+	Name     string `mapstructure:"name"`
 }
 
 func Load() (Config, error) {
