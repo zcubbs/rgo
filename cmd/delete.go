@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"your/module/rgo/pkg/k8s"
+	"github.com/zcubbs/rgo/pkg/k8s"
 
 	"github.com/spf13/cobra"
 )

@@ -1,5 +1,5 @@
 package main
 
-import "your/module/rgo/cmd"
+import "github.com/zcubbs/rgo/cmd"
 
 func main() { cmd.Execute() }

@@ -3,8 +3,9 @@ package argocd
 import (
 	"fmt"
 	"strings"
-	"your/module/rgo/pkg/config"
-	"your/module/rgo/pkg/k8s"
+
+	"github.com/zcubbs/rgo/pkg/config"
+	"github.com/zcubbs/rgo/pkg/k8s"
 
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/apimachinery/pkg/runtime/schema"

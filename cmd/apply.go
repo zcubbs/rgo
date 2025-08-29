@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 
-	"your/module/rgo/pkg/argocd"
-	"your/module/rgo/pkg/config"
-	"your/module/rgo/pkg/k8s"
+	"github.com/zcubbs/rgo/pkg/argocd"
+	"github.com/zcubbs/rgo/pkg/config"
+	"github.com/zcubbs/rgo/pkg/k8s"
 
 	"github.com/spf13/cobra"
 )

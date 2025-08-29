@@ -1,4 +1,4 @@
-module your/module/rgo
+module github.com/zcubbs/rgo
 
 go 1.25
 
