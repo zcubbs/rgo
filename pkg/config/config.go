@@ -23,6 +23,17 @@ import (
 //     destinationNamespace: default
 //     destinationServer: https://kubernetes.default.svc
 //     syncPolicy: automated
+//     isHelm: true
+//     isOCI: true
+//     ociRepoURL: https://ghcr.io/zcubbs/demo-chart
+//     ociChartName: demo-chart
+//     ociChartVersion: 1.0.0
+//     helmValueFiles:
+//       - values.yaml
+//     targetRevision: main
+//     valuesRepoURL: https://github.com/zcubbs/values
+//     valuesPath: manifests/values
+//     valuesTargetRevision: main
 // repositories:
 //   - url: https://github.com/zcubbs/go-k8s
 //     type: git
@@ -53,19 +64,29 @@ type Destination struct {
 }
 
 type Application struct {
-	Name                 string `mapstructure:"name"`
-	Project              string `mapstructure:"project"`
-	DestinationNamespace string `mapstructure:"destinationNamespace"`
-	DestinationServer    string `mapstructure:"destinationServer"`
-	SourceRepoURL        string `mapstructure:"sourceRepoURL"`
-	SourcePath           string `mapstructure:"sourcePath"`
-	SyncPolicy           string `mapstructure:"syncPolicy"`
+	Name                 string   `mapstructure:"name"`
+	Project              string   `mapstructure:"project"`
+	DestinationNamespace string   `mapstructure:"destinationNamespace"`
+	DestinationServer    string   `mapstructure:"destinationServer"`
+	SourceRepoURL        string   `mapstructure:"sourceRepoURL"`
+	SourcePath           string   `mapstructure:"sourcePath"`
+	TargetRevision       string   `mapstructure:"targetRevision"`
+	SyncPolicy           string   `mapstructure:"syncPolicy"`
+	IsHelm               bool     `mapstructure:"isHelm"`
+	IsOCI                bool     `mapstructure:"isOCI"`
+	OCIRepoURL           string   `mapstructure:"ociRepoURL"`
+	OCIChartName         string   `mapstructure:"ociChartName"`
+	OCIChartVersion      string   `mapstructure:"ociChartVersion"`
+	HelmValueFiles       []string `mapstructure:"helmValueFiles"`
 }
 
 type Repository struct {
-	URL  string `mapstructure:"url"`
-	Type string `mapstructure:"type"`
-	Name string `mapstructure:"name"`
+	URL      string `mapstructure:"url"`
+	Type     string `mapstructure:"type"`
+	Name     string `mapstructure:"name"`
+	Username string `mapstructure:"username"`
+	Password string `mapstructure:"password"`
+	SSHKey   string `mapstructure:"sshKey"`
 }
 
 type Credential struct {
